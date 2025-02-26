@@ -1,2 +1,5 @@
-print("hello!")
-require("setup")
+
+-- /init.lua
+
+require 'setup'
+

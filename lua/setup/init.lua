@@ -1,3 +1,5 @@
-require("setup.config")
-require("setup.remaps")
-print("hello from setup!")
+
+require 'setup.config'
+require 'setup.remaps'
+require 'setup.lazy-init'
+
