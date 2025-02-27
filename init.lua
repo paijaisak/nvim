@@ -1,5 +1,4 @@
 
 -- /init.lua
 
-require 'setup'
-
+require 'config'

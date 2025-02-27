@@ -1,8 +1,6 @@
 
 -- remaps.lua
 
-vim.g.mapleader = " "
-
 -- pv file explore
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
