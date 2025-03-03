@@ -1,7 +1,9 @@
 
 -- opts.lua
 
+-- show current line number as well as relative
 vim.opt.relativenumber = true
+vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} '
 
 -- if want thick cursor always: vim.opt.guicursor = ""
 
