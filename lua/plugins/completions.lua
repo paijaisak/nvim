@@ -1,4 +1,5 @@
-return {
+return
+{
 	"hrsh7th/nvim-cmp",
 	enabled = true,
 	-- load after first insert action
