@@ -1,4 +1,3 @@
-
 -- config.lua
 
 -- has to be loaded before lazy

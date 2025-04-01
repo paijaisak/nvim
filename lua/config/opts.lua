@@ -1,4 +1,3 @@
-
 -- opts.lua
 
 -- show current line number as well as relative
@@ -21,15 +20,11 @@ vim.opt.showbreak = "↪ "   -- visual indicator for wrapped lines
 
 vim.opt.termguicolors = true -- 24-bit true color support 
 
-vim.opt.scrolloff = 8 -- always show at least 8 lines over or below current line when possible
+vim.opt.scrolloff = 5 -- always show at least 8 lines over or below current line when possible
 
 vim.opt.signcolumn = "auto:3" -- sign column dynamically adjusts its width based on number of signs
 
 vim.opt.colorcolumn = "" -- 80 as a rule for code, 120 for markdown, empty = disabled
 
 vim.opt.fillchars='eob: ' -- remove annoying tildes
-
--- remove background
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 

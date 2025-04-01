@@ -1,3 +1,4 @@
+-- init.lua
 
 require 'config.config'
 require 'config.opts'

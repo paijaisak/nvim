@@ -1,4 +1,3 @@
-
 -- lazy-init.lua
 
 -- Bootstrap lazy.nvim
