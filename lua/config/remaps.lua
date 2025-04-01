@@ -26,7 +26,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- yanking and deleting to system clipboard more elegantly 
+-- yanking and deleting to system clipboard more elegantly
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>d", "\"+d")
@@ -40,4 +40,3 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- remove search highlighting
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { silent = true })
-

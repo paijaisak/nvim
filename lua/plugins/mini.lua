@@ -14,14 +14,14 @@ return
 	'echasnovski/mini.nvim',
 	enabled = true,
 	config = function()
-
 		-- icons for use with mini plugins
+
 		local icons = require('mini.icons')
 		icons.setup()
 
 		-- statusline
 		local statusline = require('mini.statusline')
-		statusline.setup { 
+		statusline.setup {
 			use_icons = vim.g.have_nerd_font,
 			-- Override sections directly in the setup config
 			sections = {
@@ -62,6 +62,5 @@ return
 
 		-- local indentscope = require('mini.indentscope')
 		-- indentscope.setup()
-
 	end
 }

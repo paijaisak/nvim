@@ -37,7 +37,7 @@ return
 					Lua = {
 						-- Add more globals to prevent errors
 						diagnostics = {
-							globals = { 
+							globals = {
 								'vim',
 								-- Common globals that might be missing
 								'describe', 'it', 'before_each', 'after_each', 'teardown',
@@ -55,10 +55,10 @@ return
 						completion = {
 							callSnippet = "Replace"
 						},
-						-- Better handling of nvim API and third-party plugins 
+						-- Better handling of nvim API and third-party plugins
 
-						workspace = { 
-							checkThirdParty = false,  -- Skip annoying prompts
+						workspace = {
+							checkThirdParty = false, -- Skip annoying prompts
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
 						-- Improve type checking
@@ -72,10 +72,9 @@ return
 		-- clangd
 		require('lspconfig').clangd.setup(
 			{
-				cmd = { "clangd", "--background-index", "--clang-tidy" },  -- Enable clang-tidy
+				cmd = { "clangd", "--background-index", "--clang-tidy" }, -- Enable clang-tidy
 				filetypes = { "c", "cpp", "objc", "objcpp" }
 			}
 		)
 	end,
 }
-
