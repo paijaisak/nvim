@@ -1,4 +1,4 @@
---lsp.lua
+-- lsp.lua
 
 --[[
 	grn -> rename
