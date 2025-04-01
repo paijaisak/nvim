@@ -1,10 +1,13 @@
+-- mini.lua
 
--- statusline
--- comments (gc)
--- autopairs
--- surround (sa, sd, sr)
--- animations
--- indentscope
+--[[
+statusline
+comments (gc)
+autopairs
+surround (sa, sd, sr)
+animations
+indentscope
+]]
 
 return
 {
@@ -18,21 +21,24 @@ return
 
 		-- statusline
 		local statusline = require('mini.statusline')
-			statusline.setup { use_icons = vim.g.have_nerd_font }
-			
-			-- override statusline format
-			statusline.section_location = function()
-				return '%2l:%-2v'
-			end
-
-			-- override statusline filepath
-			statusline.section_filename = function()
-				if vim.bo.buftype == 'terminal' then
-					return '%t'
-				else
-					return '%f%m%r'
-				end
-			end
+		statusline.setup { 
+			use_icons = vim.g.have_nerd_font,
+			-- Override sections directly in the setup config
+			sections = {
+				-- Custom location section
+				location = function()
+					return '%2l:%-2v'
+				end,
+				-- Custom filename section
+				filename = function()
+					if vim.bo.buftype == 'terminal' then
+						return '%t'
+					else
+						return '%f%m%r'
+					end
+				end,
+			}
+		}
 
 		-- comments ('gc' and 'gcc')
 		local comment = require('mini.comment')
@@ -53,10 +59,9 @@ return
 		-- auto highlight word under cursor
 		-- local highlight = require('mini.cursorword')
 		-- highlight.setup()
-		
-		local indentscope = require('mini.indentscope')
-		indentscope.setup()
+
+		-- local indentscope = require('mini.indentscope')
+		-- indentscope.setup()
 
 	end
 }
-

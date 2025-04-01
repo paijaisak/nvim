@@ -1,3 +1,5 @@
+-- completions.lua
+
 return
 {
 	"hrsh7th/nvim-cmp",
@@ -13,18 +15,18 @@ return
 		},
 
 		"saadparwaiz1/cmp_luasnip", -- LuaSnip completions source
-		
+
 		-- Other useful sources
 		"hrsh7th/cmp-nvim-lsp", -- LSP completions
 		"hrsh7th/cmp-path", -- File system paths
 		"hrsh7th/cmp-buffer", -- Current buffer words
-		
+
 		-- Optional: Icons in completion menu
 		"onsails/lspkind.nvim",
 	},
 
 	config = function()
-		local cmp = require('cmp')	
+		local cmp = require('cmp')
 		local luasnip = require('luasnip')
 
 		-- Load friendly-snippets
