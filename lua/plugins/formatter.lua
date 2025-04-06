@@ -43,6 +43,7 @@ return {
 
 					if format_found then
 						require("conform").format({ async = true, lsp_fallback = true })
+						vim.notify("clang-format done)", vim.log.levels.WARN)
 					else
 						vim.notify("No .clang-format found for this file.", vim.log.levels.WARN)
 					end
