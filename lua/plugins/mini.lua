@@ -15,7 +15,6 @@ return
 	enabled = true,
 	config = function()
 		-- icons for use with mini plugins
-
 		local icons = require('mini.icons')
 		icons.setup()
 
@@ -55,6 +54,51 @@ return
 		-- add animations (smooth scrolling, cursor animations, window resize)
 		local animations = require('mini.animate')
 		animations.setup()
+
+		-- Create custom mapping clues
+		local direct_clues = {}
+        
+		-- Add a clue for <Leader>pv mapping
+		table.insert(direct_clues, { mode = 'n', keys = '<Leader>', postkeys = 'pv', desc = 'netrw' })
+
+		-- Set up mini.clue
+		require('mini.clue').setup({
+			window = {
+				delay = 100,  -- Make it appear quickly
+				config = {
+					width = 'auto',
+					border = 'single',
+				},
+			},
+			
+			triggers = {
+				-- Leader triggers
+				{ mode = 'n', keys = '<Leader>' },
+				{ mode = 'x', keys = '<Leader>' },
+
+				-- Built-in completion
+				{ mode = 'i', keys = '<C-x>' },
+
+				-- Other keys
+				{ mode = 'n', keys = 'g' },
+				{ mode = 'n', keys = "'" },
+				{ mode = 'n', keys = '`' },
+				{ mode = 'n', keys = '"' },
+				{ mode = 'n', keys = '<C-w>' },
+				{ mode = 'n', keys = 'z' },
+			},
+			
+			clues = {
+				-- Add the <Leader>pv mapping directly
+				direct_clues,
+				
+				-- Also include category headings
+				{ mode = 'n', keys = '<Leader>p', desc = 'Files' },
+				
+				-- Add netrw mapping with explicit description
+				{ mode = 'n', keys = '<Leader>pv', desc = 'netrw' },
+			},
+		})
 
 		-- auto highlight word under cursor
 		-- local highlight = require('mini.cursorword')
