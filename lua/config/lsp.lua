@@ -9,6 +9,24 @@
 	CTRL-s (insert mode) -> signature help
 ]]
 
+-- Create global LSP keybindings with descriptions
+-- These will be set up immediately and be present even without LSP
+vim.keymap.set('n', 'grn', function() vim.lsp.buf.rename() end, { desc = 'Rename symbol' })
+vim.keymap.set('n', 'gra', function() vim.lsp.buf.code_action() end, { desc = 'Code action' })
+vim.keymap.set('n', 'grr', function() vim.lsp.buf.references() end, { desc = 'Find references' })
+vim.keymap.set('n', 'gri', function() vim.lsp.buf.implementation() end, { desc = 'Find implementations' })
+vim.keymap.set('n', 'gO', function() vim.lsp.buf.document_symbol() end, { desc = 'Document symbols' })
+vim.keymap.set('i', '<C-s>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature help' })
+
+-- Add hover, definition, etc.
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, { desc = 'Hover documentation' })
+vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, { desc = 'Go to definition' })
+vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, { desc = 'Go to declaration' })
+vim.keymap.set('n', 'gt', function() vim.lsp.buf.type_definition() end, { desc = 'Go to type definition' })
+
+-- Create a group for gr prefix (used by mini.clue)
+vim.keymap.set('n', 'gr', '<Nop>', { desc = 'LSP References/Actions' })
+
 local function setup_lsp()
 	-- Setup Lua language server for Neovim configuration
 	vim.api.nvim_create_autocmd("FileType", {
@@ -76,31 +94,7 @@ local function setup_lsp()
 			})
 		end,
 	})
-
-	-- Setup key mappings
-	vim.api.nvim_create_autocmd('LspAttach', {
-		callback = function(args)
-			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			local bufnr = args.buf
-
-			-- Mappings
-			local opts = { buffer = bufnr }
-			vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
-			vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, opts)
-			vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
-			vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
-			vim.keymap.set('n', 'gO', vim.lsp.buf.document_symbol, opts)
-			vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, opts)
-
-			-- Add hover, definition, etc.
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-			vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
-		end,
-	})
 end
 
 -- Initialize LSP
 setup_lsp()
-

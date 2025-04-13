@@ -55,48 +55,46 @@ return
 		local animations = require('mini.animate')
 		animations.setup()
 
-		-- Create custom mapping clues
-		local direct_clues = {}
-        
-		-- Add a clue for <Leader>pv mapping
-		table.insert(direct_clues, { mode = 'n', keys = '<Leader>', postkeys = 'pv', desc = 'netrw' })
-
-		-- Set up mini.clue
-		require('mini.clue').setup({
+		-- Set up mini.clue with a simplified configuration
+		-- Now that all LSP keybindings are global, mini.clue should detect them automatically
+		local clue = require('mini.clue')
+		clue.setup({
 			window = {
-				delay = 100,  -- Make it appear quickly
+				delay = 200,
 				config = {
 					width = 'auto',
 					border = 'single',
 				},
 			},
 			
+			-- Enable showing existing key mappings
+			show_existing = true,
+
+			-- Use builtin_specs for standard key groups
+			builtin_specs = {
+				g = { desc = 'Go to...' },
+				z = { desc = 'Folds, spelling, etc.' },
+				['<Leader>'] = { desc = 'Leader mappings' },
+				['<C-w>'] = { desc = 'Windows' },
+			},
+			
 			triggers = {
-				-- Leader triggers
-				{ mode = 'n', keys = '<Leader>' },
-				{ mode = 'x', keys = '<Leader>' },
-
-				-- Built-in completion
-				{ mode = 'i', keys = '<C-x>' },
-
-				-- Other keys
+				-- Show clues on these triggers
 				{ mode = 'n', keys = 'g' },
-				{ mode = 'n', keys = "'" },
-				{ mode = 'n', keys = '`' },
-				{ mode = 'n', keys = '"' },
-				{ mode = 'n', keys = '<C-w>' },
+				{ mode = 'n', keys = 'gr' },  -- Explicit trigger for gr
 				{ mode = 'n', keys = 'z' },
+				{ mode = 'n', keys = '<Leader>' },
+				{ mode = 'n', keys = '<C-w>' },
+				{ mode = 'i', keys = '<C-x>' },
 			},
 			
 			clues = {
-				-- Add the <Leader>pv mapping directly
-				direct_clues,
-				
-				-- Also include category headings
+				-- Basic leader clues
+				{ mode = 'n', keys = '<Leader>pv', desc = 'netrw' },
 				{ mode = 'n', keys = '<Leader>p', desc = 'Files' },
 				
-				-- Add netrw mapping with explicit description
-				{ mode = 'n', keys = '<Leader>pv', desc = 'netrw' },
+				-- Show help when pressing leader twice
+				{ mode = 'n', keys = '<Leader><Leader>', desc = 'Show help' },
 			},
 		})
 
