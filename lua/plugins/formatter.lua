@@ -1,4 +1,5 @@
 -- formatter.lua
+-- <leader>f -> format this
 
 -- Sets up code formatting for various languages
 -- Uses clang-format for C/C++ files with .clang-format from project root
@@ -52,8 +53,9 @@ return {
 					require("conform").format({ async = true, lsp_fallback = true })
 				end
 			end,
+
 			mode = "",
-			desc = "Format buffer",
+			desc = "format buffer",
 		},
 	},
 	opts = {
