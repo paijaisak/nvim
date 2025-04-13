@@ -1,13 +1,16 @@
 -- remaps.lua
 
--- pv file explore
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- netrw file explorer
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'netrw'})
 
--- space+space+x sources this file
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+-- space+x sources this file
+vim.keymap.set("n", "<leader>x", "<cmd>so %<CR>")
 
--- space+x runs this line
-vim.keymap.set("n", "<leader>x", "<cmd>:.lua<CR>")
+-- empty, for clue.mini
+vim.keymap.set('n', '<Leader>s', function() end, { desc = '[s]earch'})
+
+-- space+xx runs this line
+-- vim.keymap.set("n", "<leader>xx", "<cmd>:.lua<CR>")
 
 -- in visual mode, space+x runs these lines
 vim.keymap.set("n", "<leader>x", "<cmd>:lua<CR>")
@@ -26,17 +29,23 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- yanking and deleting to system clipboard more elegantly
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>d", "\"+d")
-vim.keymap.set("v", "<leader>d", "\"+d")
+-- switch buffers
+vim.keymap.set("n", "<leader>b", "<C-6>", { desc = 'next buffer'})
+
+-- yanking, putting and deleting to system clipboard more elegantly
+vim.keymap.set("n", "<leader>y", "\"+y", { desc = 'yank to system' })
+vim.keymap.set("n", "<leader>d", "\"+d", { desc = 'delete to system' })
+vim.keymap.set("n", "<leader>p", "\"+p")
 
 -- change every occurence of word i'm in (the primeagen)
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set(
+	"n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = 'change every occurence of word i\'m in' }
+)
 
 -- chmod +x using leader+x (the primeagen)
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- remove search highlighting
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { silent = true })
+
