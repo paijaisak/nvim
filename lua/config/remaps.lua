@@ -1,16 +1,18 @@
 -- remaps.lua
 
 -- netrw file explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'netrw'})
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'netrw' })
+
+vim.keymap.set('n', '<leader>o', '<cmd>Oil --float .<CR>', { desc = 'open oil' })
 
 -- space+x sources this file
 vim.keymap.set("n", "<leader>x", "<cmd>so %<CR>")
 
 -- empty, for clue.mini
-vim.keymap.set('n', '<Leader>s', function() end, { desc = '[s]earch'})
+vim.keymap.set('n', '<Leader>s', function() end, { desc = '[s]earch' })
 
 -- transparency-toggle
-vim.keymap.set('n', '<leader>t', ':TransparentToggle<CR>', { desc = 'toggle transparency'})
+vim.keymap.set('n', '<leader>t', ':TransparentToggle<CR>', { desc = 'toggle transparency' })
 
 -- space+xx runs this line
 -- vim.keymap.set("n", "<leader>xx", "<cmd>:.lua<CR>")
@@ -33,7 +35,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- switch buffers
-vim.keymap.set("n", "<leader>b", "<C-6>", { desc = 'next buffer'})
+vim.keymap.set("n", "<leader>b", "<C-6>", { desc = 'next buffer' })
 
 -- yanking, putting and deleting to system clipboard more elegantly
 vim.keymap.set("n", "<leader>y", "\"+y", { desc = 'yank to system' })
@@ -51,4 +53,3 @@ vim.keymap.set(
 
 -- remove search highlighting
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { silent = true })
-
