@@ -9,6 +9,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>so %<CR>")
 -- empty, for clue.mini
 vim.keymap.set('n', '<Leader>s', function() end, { desc = '[s]earch'})
 
+-- transparency-toggle
+vim.keymap.set('n', '<leader>t', ':TransparentToggle<CR>', { desc = 'toggle transparency'})
+
 -- space+xx runs this line
 -- vim.keymap.set("n", "<leader>xx", "<cmd>:.lua<CR>")
 
