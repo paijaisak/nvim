@@ -1,5 +1,6 @@
 return
 {
 	'https://github.com/xiyaowong/transparent.nvim.git',
-	enabled = true
+	enabled = true,
+	lazy = false
 }
