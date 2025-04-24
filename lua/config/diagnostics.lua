@@ -38,10 +38,11 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
--- auto-populate location list with diagnostics
+-- auto-populate location and quickfix list with diagnostics
 vim.api.nvim_create_autocmd({'DiagnosticChanged'}, {
 	desc = 'Populate location list with diagnostics without opening it',
 	callback = function()
+		vim.diagnostic.setqflist({ open = false })
 		vim.diagnostic.setloclist({ open = false })
 	end,
 })
@@ -50,11 +51,18 @@ vim.api.nvim_create_autocmd({'DiagnosticChanged'}, {
 
 -- Set up mappings for better diagnostic navigation
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[e]xplore diagnostic' })
--- alt-k on mac
-vim.keymap.set('n', 'ª', '<cmd>lprev<CR>', { desc = 'previous diagnostic' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = '[l]ocal diagnostics' })
+vim.keymap.set('n', '<leader>g', vim.diagnostic.setqflist, { desc = '[g]lobal diagnostics'})
+
 -- alt-j on mac
 vim.keymap.set('n', '√', '<cmd>lnext<CR>', { desc = 'next diagnostic' })
-vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = '[l]ist diagnostics' })
+-- alt-k on mac
+vim.keymap.set('n', 'ª', '<cmd>lprev<CR>', { desc = 'previous diagnostic' })
+
+-- alt-J on mac
+vim.keymap.set('n', '¬', '<cmd>cnext<CR>', { desc = 'next global diagnostic' })
+-- alt-K on mac
+vim.keymap.set('n', 'º', '<cmd>cprev<CR>', { desc = 'previous global diagnostic' })
 
 -- Define signs with more informative icons for different diagnostic levels
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
