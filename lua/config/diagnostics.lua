@@ -38,6 +38,14 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- auto-populate location list with diagnostics
+vim.api.nvim_create_autocmd({'DiagnosticChanged'}, {
+	desc = 'Populate location list with diagnostics without opening it',
+	callback = function()
+		vim.diagnostic.setloclist({ open = false })
+	end,
+})
+
 -- use location list instead of quickfix list -> setqflist < setloclist & cnext < lnext
 
 -- Set up mappings for better diagnostic navigation
