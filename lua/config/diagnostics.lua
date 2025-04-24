@@ -15,18 +15,18 @@ vim.diagnostic.config({
 		max_height = 20,
 	},
 
-	-- Use virtual text for inline diagnostics
-	virtual_text = {
-		spacing = 2,
-		prefix = "●", -- Use a simple dot as prefix
-		format = function(diagnostic)
-			-- Limit inline text to a certain length
-			if diagnostic.message:len() > 50 then
-				return diagnostic.message:sub(1, 47) .. "..."
-			end
-			return diagnostic.message
-		end,
-	},
+	-- optionally, use virtual text for inline diagnostics
+	-- virtual_text = {
+	-- 	spacing = 2,
+	-- 	prefix = "●", -- Use a simple dot as prefix
+	-- 	format = function(diagnostic)
+	-- 		-- Limit inline text to a certain length
+	-- 		if diagnostic.message:len() > 50 then
+	-- 			return diagnostic.message:sub(1, 47) .. "..."
+	-- 		end
+	-- 		return diagnostic.message
+	-- 	end,
+	-- },
 
 	-- Show signs in the sign column
 	signs = false,
