@@ -49,7 +49,7 @@ vim.diagnostic.config({
 })
 
 -- auto-populate location and quickfix list with diagnostics
-vim.api.nvim_create_autocmd({'DiagnosticChanged'}, {
+vim.api.nvim_create_autocmd({ 'DiagnosticChanged' }, {
 	desc = 'Populate location list with diagnostics without opening it',
 	callback = function()
 		vim.diagnostic.setqflist({ open = false })
@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd({'DiagnosticChanged'}, {
 -- Set up mappings for better diagnostic navigation
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[e]xplore diagnostic' })
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = '[l]ocal diagnostics' })
-vim.keymap.set('n', '<leader>g', vim.diagnostic.setqflist, { desc = '[g]lobal diagnostics'})
+vim.keymap.set('n', '<leader>g', vim.diagnostic.setqflist, { desc = '[g]lobal diagnostics' })
 
 -- alt-j on mac
 vim.keymap.set('n', '√', '<cmd>lnext<CR>', { desc = 'next diagnostic' })
@@ -75,8 +75,34 @@ vim.keymap.set('n', '¬', '<cmd>cnext<CR>', { desc = 'next global diagnostic' })
 vim.keymap.set('n', 'º', '<cmd>cprev<CR>', { desc = 'previous global diagnostic' })
 
 -- Define signs with more informative icons for different diagnostic levels
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+local signs = {
+	[vim.diagnostic.severity.ERROR] = "󰅚 ",
+	[vim.diagnostic.severity.WARN] = "󰀪 ",
+	[vim.diagnostic.severity.HINT] = "󰌶 ",
+	[vim.diagnostic.severity.INFO] = "ℹ "
+}
+
+-- Update the diagnostic config to use the modern sign approach
+vim.diagnostic.config({
+	float = {
+		border = "rounded",
+		source = true,
+		header = "",
+		prefix = "",
+		width = 80,
+		max_height = 20,
+	},
+
+	signs = {
+		text = signs,
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+		}
+	},
+
+	update_in_insert = false,
+	severity_sort = true,
+})
