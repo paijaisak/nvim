@@ -38,13 +38,15 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- use location list instead of quickfix list -> setqflist < setloclist & cnext < lnext
+
 -- Set up mappings for better diagnostic navigation
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'open floating diagnostic' })
 -- alt-k on mac
-vim.keymap.set('n', 'ª', '<cmd>cprev<CR>', { desc = 'previous diagnostic' })
+vim.keymap.set('n', 'ª', '<cmd>lprev<CR>', { desc = 'previous diagnostic' })
 -- alt-j on mac
-vim.keymap.set('n', '√', '<cmd>cnext<CR>', { desc = 'next diagnostic' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'open quickfix list' })
+vim.keymap.set('n', '√', '<cmd>lnext<CR>', { desc = 'next diagnostic' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'diagnostic list' })
 
 -- Define signs with more informative icons for different diagnostic levels
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
