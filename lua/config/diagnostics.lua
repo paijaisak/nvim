@@ -16,7 +16,7 @@ vim.diagnostic.config({
 	-- Use a floating window for diagnostics
 	float = {
 		border = "rounded",
-		source = "always",
+		source = true,
 		header = "",
 		prefix = "",
 		-- Increase width for longer messages
