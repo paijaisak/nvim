@@ -17,7 +17,7 @@ vim.diagnostic.config({
 
 	-- Use virtual text for inline diagnostics
 	virtual_text = {
-		spacing = 4,
+		spacing = 2,
 		prefix = "●", -- Use a simple dot as prefix
 		format = function(diagnostic)
 			-- Limit inline text to a certain length
@@ -29,7 +29,7 @@ vim.diagnostic.config({
 	},
 
 	-- Show signs in the sign column
-	signs = true,
+	signs = false,
 
 	-- Update diagnostics in insert mode (set to false if distracting)
 	update_in_insert = false,
@@ -41,12 +41,12 @@ vim.diagnostic.config({
 -- use location list instead of quickfix list -> setqflist < setloclist & cnext < lnext
 
 -- Set up mappings for better diagnostic navigation
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'open floating diagnostic' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[e]xplore diagnostic' })
 -- alt-k on mac
 vim.keymap.set('n', 'ª', '<cmd>lprev<CR>', { desc = 'previous diagnostic' })
 -- alt-j on mac
 vim.keymap.set('n', '√', '<cmd>lnext<CR>', { desc = 'next diagnostic' })
-vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'diagnostic list' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = '[l]ist diagnostics' })
 
 -- Define signs with more informative icons for different diagnostic levels
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
@@ -54,4 +54,3 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-

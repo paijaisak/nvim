@@ -29,12 +29,8 @@ vim.opt.colorcolumn = "" -- 80 as a rule for code, 120 for markdown, empty = dis
 vim.opt.fillchars = 'eob: ' -- remove annoying tildes
 
 vim.diagnostic.config({
-	virtual_lines = true
-
-	-- Alternatively, customize specific options
-	-- virtual_lines = {
-	--  -- Only show virtual line diagnostics for the current cursor line
-	--  current_line = true,
-	-- },
-
+	virtual_lines = {
+		-- Only show virtual line diagnostics for the current cursor line
+		current_line = true,
+	},
 })
