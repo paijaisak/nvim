@@ -1,5 +1,15 @@
 -- diagnostics.lua
--- Enhanced configuration for diagnostics display and navigation
+-- enhanced configuration for diagnostics display and navigation
+
+--[[
+	alt-j, alt-k -> jump to next/prev local diagnostic
+	alt-J, alt-K -> jump to next/prev global diagnostic
+
+	<leader>e -> floating diagnostic window
+
+	<leader>g -> quickfix list (global)
+	<leader>l -> location list
+]]
 
 -- Set up better diagnostic display
 vim.diagnostic.config({
