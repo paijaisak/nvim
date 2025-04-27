@@ -74,7 +74,6 @@ vim.keymap.set('n', '¬', '<cmd>cnext<CR>', { desc = 'next global diagnostic' })
 -- alt-K on mac
 vim.keymap.set('n', 'º', '<cmd>cprev<CR>', { desc = 'previous global diagnostic' })
 
--- Define signs with more informative icons for different diagnostic levels
 local signs = {
 	[vim.diagnostic.severity.ERROR] = "󰅚 ",
 	[vim.diagnostic.severity.WARN] = "󰀪 ",
@@ -82,7 +81,6 @@ local signs = {
 	[vim.diagnostic.severity.INFO] = "ℹ "
 }
 
--- Update the diagnostic config to use the modern sign approach
 vim.diagnostic.config({
 	float = {
 		border = "rounded",
