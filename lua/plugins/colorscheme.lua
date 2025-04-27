@@ -36,10 +36,11 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = false,
+		enabled = true,
 		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
-				transparent = false, -- Set to true for transparent background
+				transparent = true, -- Set to true for transparent background
 				theme = "wave", -- Choose "wave" (default), "dragon" (warmer), or "lotus" (lighter)
 				background = {
 					dark = "wave", -- Style for dark variant
@@ -75,6 +76,9 @@ return {
 			-- Extra steps to ensure transparency works properly
 			-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE", ctermbg = "NONE" })
+			vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "TelescopeWindowBorder", { bg = "none" })
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
 		end,
 	},
 

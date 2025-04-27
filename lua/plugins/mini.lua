@@ -66,7 +66,7 @@ return
 					border = 'single',
 				},
 			},
-			
+
 			-- Enable showing existing key mappings
 			show_existing = true,
 
@@ -77,22 +77,22 @@ return
 				['<Leader>'] = { desc = 'Leader mappings' },
 				['<C-w>'] = { desc = 'Windows' },
 			},
-			
+
 			triggers = {
 				-- Show clues on these triggers
 				{ mode = 'n', keys = 'g' },
-				{ mode = 'n', keys = 'gr' },  -- Explicit trigger for gr
+				{ mode = 'n', keys = 'gr' }, -- Explicit trigger for gr
 				{ mode = 'n', keys = 'z' },
 				{ mode = 'n', keys = '<Leader>' },
 				{ mode = 'n', keys = '<C-w>' },
 				{ mode = 'i', keys = '<C-x>' },
 			},
-			
+
 			clues = {
 				-- Basic leader clues
-				{ mode = 'n', keys = '<Leader>pv', desc = 'netrw' },
-				{ mode = 'n', keys = '<Leader>p', desc = 'Files' },
-				
+				{ mode = 'n', keys = '<Leader>pv',       desc = 'netrw' },
+				{ mode = 'n', keys = '<Leader>p',        desc = 'Files' },
+
 				-- Show help when pressing leader twice
 				{ mode = 'n', keys = '<Leader><Leader>', desc = 'Show help' },
 			},
@@ -106,3 +106,4 @@ return
 		-- indentscope.setup()
 	end
 }
+

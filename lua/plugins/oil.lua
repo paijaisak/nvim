@@ -13,7 +13,7 @@ return
 {
 	'stevearc/oil.nvim',
 	---@module 'oil'
----@diagnostic disable-next-line: undefined-doc-name
+	---@diagnostic disable-next-line: undefined-doc-name
 	---@type oil.SetupOpts
 	opts = {
 		default_file_explorer = false
