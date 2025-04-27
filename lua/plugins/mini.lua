@@ -22,6 +22,8 @@ return
 		local statusline = require('mini.statusline')
 		statusline.setup {
 			use_icons = vim.g.have_nerd_font,
+			-- Make statusline transparent
+			content_background = 'none',
 			-- Override sections directly in the setup config
 			sections = {
 				-- Custom location section
@@ -38,6 +40,20 @@ return
 				end,
 			}
 		}
+
+		-- Add selective transparency to statusline highlight groups
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			pattern = "*",
+			callback = function()
+				-- Make filename and location transparent
+				vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "NONE", ctermbg = "NONE" })
+				vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { bg = "NONE", ctermbg = "NONE" })
+				vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { bg = "NONE", ctermbg = "NONE" })
+				vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { bg = "NONE", ctermbg = "NONE" })
+				-- Keep mode indicators with their original background colors
+				-- (MiniStatuslineModeNormal, etc. are left as-is)
+			end,
+		})
 
 		-- comments ('gc' and 'gcc')
 		local comment = require('mini.comment')
@@ -106,4 +122,3 @@ return
 		-- indentscope.setup()
 	end
 }
-
