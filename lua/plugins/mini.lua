@@ -18,42 +18,79 @@ return
 		local icons = require('mini.icons')
 		icons.setup()
 
-		-- statusline
-		local statusline = require('mini.statusline')
-		statusline.setup {
-			use_icons = vim.g.have_nerd_font,
-			-- Make statusline transparent
-			content_background = 'none',
-			-- Override sections directly in the setup config
-			sections = {
-				-- Custom location section
-				location = function()
-					return '%2l:%-2v'
-				end,
-				-- Custom filename section
-				filename = function()
-					if vim.bo.buftype == 'terminal' then
-						return '%t'
-					else
-						return '%f%m%r'
-					end
-				end,
-			}
-		}
+		local minigit = require('mini.git')
+		minigit.setup()
 
-		-- Add selective transparency to statusline highlight groups
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			pattern = "*",
-			callback = function()
-				-- Make filename and location transparent
-				vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "NONE", ctermbg = "NONE" })
-				vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { bg = "NONE", ctermbg = "NONE" })
-				vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { bg = "NONE", ctermbg = "NONE" })
-				vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { bg = "NONE", ctermbg = "NONE" })
-				-- Keep mode indicators with their original background colors
-				-- (MiniStatuslineModeNormal, etc. are left as-is)
-			end,
-		})
+		-- local diff = require('mini.diff')
+		-- diff.setup()
+
+		-- statusline
+		-- local statusline = require('mini.statusline')
+		-- statusline.setup {
+		-- 	use_icons = vim.g.have_nerd_font,
+		-- 	-- Make statusline transparent
+		-- 	content_background = 'none',
+		-- 	-- Custom content to remove the "( M)" indicator
+		-- 	content = {
+		-- 		active = function()
+		-- 			local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
+		--
+		-- 			-- Get git branch manually without diff indicators
+		-- 			local git = ''
+		-- 			local branch = vim.b.gitsigns_head or vim.g.gitsigns_head
+		-- 			if branch and branch ~= '' then
+		-- 				git = string.format('(%s)', branch)
+		-- 			end
+		--
+		-- 			local diagnostics   = statusline.section_diagnostics({ trunc_width = 75 })
+		-- 			local lsp           = statusline.section_lsp({ trunc_width = 75 })
+		-- 			local filename      = statusline.section_filename({ trunc_width = 140 })
+		-- 			local fileinfo      = statusline.section_fileinfo({ trunc_width = 120 })
+		-- 			local location      = statusline.section_location({ trunc_width = 75 })
+		-- 			local search        = statusline.section_searchcount({ trunc_width = 75 })
+		--
+		-- 			return statusline.combine_groups({
+		-- 				{ hl = mode_hl,                  strings = { mode } },
+		-- 				-- Custom git without diff indicators
+		-- 				{ hl = 'MiniStatuslineDevinfo',  strings = { git, diagnostics, lsp } },
+		-- 				'%<', -- Mark general truncate point
+		-- 				{ hl = 'MiniStatuslineFilename', strings = { filename } },
+		-- 				'%=', -- End left alignment
+		-- 				{ hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+		-- 				{ hl = mode_hl,                  strings = { search, location } },
+		-- 			})
+		-- 		end,
+		-- 	},
+		-- 	-- Override sections directly in the setup config
+		-- 	sections = {
+		-- 		-- Custom location section
+		-- 		location = function()
+		-- 			return '%2l:%-2v'
+		-- 		end,
+		-- 		-- Custom filename section
+		-- 		filename = function()
+		-- 			if vim.bo.buftype == 'terminal' then
+		-- 				return '%t'
+		-- 			else
+		-- 				return '%f%r'
+		-- 			end
+		-- 		end,
+		-- 	}
+		-- }
+		--
+		-- -- Add selective transparency to statusline highlight groups
+		-- vim.api.nvim_create_autocmd("ColorScheme", {
+		-- 	pattern = "*",
+		-- 	callback = function()
+		-- 		-- Make filename and location transparent
+		-- 		vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "NONE", ctermbg = "NONE" })
+		-- 		vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { bg = "NONE", ctermbg = "NONE" })
+		-- 		vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { bg = "NONE", ctermbg = "NONE" })
+		-- 		vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { bg = "NONE", ctermbg = "NONE" })
+		-- 		-- Keep mode indicators with their original background colors
+		-- 		-- (MiniStatuslineModeNormal, etc. are left as-is)
+		-- 	end,
+		-- })
 
 		-- comments ('gc' and 'gcc')
 		local comment = require('mini.comment')
