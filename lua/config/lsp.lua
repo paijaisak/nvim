@@ -77,7 +77,8 @@ local function setup_lsp()
 			vim.lsp.start({
 				name = "lua_ls",
 				cmd = { "lua-language-server" },
-				root_dir = vim.fs.dirname(vim.fs.find({ ".git", "init.lua", "main.lua" }, { upward = true })[1]),
+				root_dir = vim.fs.dirname(vim.fs.find({ ".git", "init.lua", "main.lua" },
+					{ upward = true })[1]),
 				settings = lua_settings,
 			})
 		end,
@@ -90,7 +91,21 @@ local function setup_lsp()
 			vim.lsp.start({
 				name = "clangd",
 				cmd = { "clangd", "--background-index", "--clang-tidy" },
-				root_dir = vim.fs.dirname(vim.fs.find({ ".git", "compile_commands.json", "compile_flags.txt" }, { upward = true })[1]),
+				root_dir = vim.fs.dirname(vim.fs.find(
+					{ ".git", "compile_commands.json", "compile_flags.txt" }, { upward = true })[1]),
+			})
+		end,
+	})
+
+	-- setup rust-analyzer LSP
+	vim.api.nvim_create_autocmd('FileType', {
+		pattern = { 'rust' },
+		callback = function()
+			vim.lsp.start({
+				name = 'rust-analyzer',
+				cmd = { 'rust-analyzer' },
+				root_dir = vim.fs.dirname(vim.fs.find({ '.git', 'Cargo.toml', 'rust-analyzer.toml' },
+					{ upward = true })[1])
 			})
 		end,
 	})
