@@ -21,7 +21,7 @@ return
 			icons = {
 				vim = ' 󱐋 ',
 				git = {
-					head = '󰄛',
+					head = ' 󰄛',
 					added = '',
 					changed = '',
 					removed = '',
@@ -171,4 +171,3 @@ return
 		end, 1000)
 	end,
 }
-

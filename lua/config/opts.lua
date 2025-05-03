@@ -48,7 +48,8 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 
 -- show current line number as well as relative
 vim.opt.relativenumber = true
-vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} '
+vim.opt.numberwidth = 1 -- minimum number width
+vim.opt.statuscolumn = '%{v:relnum?v:relnum:v:lnum}'
 
 -- if want thick cursor always: vim.opt.guicursor = ""
 
@@ -68,7 +69,7 @@ vim.opt.termguicolors = true -- 24-bit true color support
 
 vim.opt.scrolloff = 5 -- always show at least 8 lines over or below current line when possible
 
-vim.opt.signcolumn = "auto:3" -- sign column dynamically adjusts its width based on number of signs
+vim.opt.signcolumn = "auto:1" -- show sign column only when needed with minimal width
 
 vim.opt.colorcolumn = "" -- 80 as a rule for code, 120 for markdown, empty = disabled
 
