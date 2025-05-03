@@ -31,6 +31,21 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 	command = 'redrawstatus',
 })
 
+-- Fix statusline disappearing in insert mode
+vim.api.nvim_create_autocmd('InsertEnter', {
+	group = vim.api.nvim_create_augroup(
+		'fix_statusline_in_insert',
+		{ clear = true }
+	),
+	desc = 'Prevent statusline from disappearing in insert mode',
+	pattern = { '*' },
+	callback = function()
+		vim.defer_fn(function() 
+			vim.cmd('redrawstatus') 
+		end, 0)
+	end,
+})
+
 -- show current line number as well as relative
 vim.opt.relativenumber = true
 vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} '
