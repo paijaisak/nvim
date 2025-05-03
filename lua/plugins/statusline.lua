@@ -53,8 +53,8 @@ return
 			callback = function()
 				-- Hard-code the specific colors from the rose-pine.lua theme file
 				local rose_colors = {
-					normal = '#9ccfd8', -- Cyan
-					insert = '#ebbcba', -- Pink/Rose
+					normal = '#ebbcba', -- Cyan
+					insert = '#c4a7e7', -- Pink/Rose
 					visual = '#c4a7e7', -- Purple/Iris
 					replace = '#eb6f92', -- Red/Love
 					command = '#f6c177', -- Yellow/Gold
@@ -76,33 +76,54 @@ return
 				end
 
 				-- Extra highlight groups for git and diagnostics - all with transparent bg
-				vim.api.nvim_set_hl(0, "StGitHead", { fg = "#f6c177", bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StGitHead", { fg = "#9ccfd8", bg = "NONE" })
 				vim.api.nvim_set_hl(0, "StGitAdded", { fg = "#9ccfd8", bg = "NONE" })
 				vim.api.nvim_set_hl(0, "StGitChanged", { fg = "#ebbcba", bg = "NONE" })
 				vim.api.nvim_set_hl(0, "StGitRemoved", { fg = "#eb6f92", bg = "NONE" })
 
-				-- Diagnostic highlights
-				vim.api.nvim_set_hl(0, "StDiagnosticError",
-					{ fg = "#eb6f92", bg = "NONE", reverse = true })
-				vim.api.nvim_set_hl(0, "StDiagnosticWarn",
-					{ fg = "#f6c177", bg = "NONE", reverse = true })
-				vim.api.nvim_set_hl(0, "StDiagnosticHint",
-					{ fg = "#c4a7e7", bg = "NONE", reverse = true })
-				vim.api.nvim_set_hl(0, "StDiagnosticInfo",
-					{ fg = "#9ccfd8", bg = "NONE", reverse = true })
+				-- Diagnostic highlights - using consistent colors for icons and text
+				local error_color = "#eb6f92" -- Red/Love
+				local warn_color = "#f6c177" -- Yellow/Gold
+				local hint_color = "#c4a7e7" -- Purple/Iris
+				local info_color = "#ebbcba"
 
-				vim.api.nvim_set_hl(0, "StDiagnosticErrorLspClient", { fg = "#eb6f92", bg = "NONE" })
-				vim.api.nvim_set_hl(0, "StDiagnosticWarnLspClient", { fg = "#f6c177", bg = "NONE" })
-				vim.api.nvim_set_hl(0, "StDiagnosticHintLspClient", { fg = "#c4a7e7", bg = "NONE" })
-				vim.api.nvim_set_hl(0, "StDiagnosticInfoLspClient", { fg = "#9ccfd8", bg = "NONE" })
+				-- For the diagnostic elements - ensuring all parts match
+				vim.api.nvim_set_hl(0, "DiagnosticError", { fg = error_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = warn_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = hint_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = info_color, bg = "NONE" })
+
+				-- For the icon in the statusline (reverse style)
+				vim.api.nvim_set_hl(0, "StDiagnosticError",
+					{ fg = error_color, bg = "NONE", reverse = true })
+				vim.api.nvim_set_hl(0, "StDiagnosticWarn",
+					{ fg = warn_color, bg = "NONE", reverse = true })
+				vim.api.nvim_set_hl(0, "StDiagnosticHint",
+					{ fg = hint_color, bg = "NONE", reverse = true })
+				vim.api.nvim_set_hl(0, "StDiagnosticInfo",
+					{ fg = info_color, bg = "NONE", reverse = true })
+
+				-- For the LSP client name - match the colors with the icons
+				vim.api.nvim_set_hl(0, "StDiagnosticErrorLspClient", { fg = error_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StDiagnosticWarnLspClient", { fg = warn_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StDiagnosticHintLspClient", { fg = hint_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StDiagnosticInfoLspClient", { fg = info_color, bg = "NONE" })
 
 				-- Info highlights - all transparent backgrounds
-				vim.api.nvim_set_hl(0, "StLsp", { fg = "#9ccfd8", bg = "NONE" })
-				vim.api.nvim_set_hl(0, "StLspReverse", { fg = "#9ccfd8", bg = "NONE", reverse = true })
-				vim.api.nvim_set_hl(0, "StInfo", { fg = "#9ccfd8", bg = "NONE" })
-				vim.api.nvim_set_hl(0, "StInfoReverse", { fg = "#9ccfd8", bg = "NONE", reverse = true })
+				vim.api.nvim_set_hl(0, "StLsp", { fg = info_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StLspReverse", { fg = info_color, bg = "NONE", reverse = true })
+				vim.api.nvim_set_hl(0, "StInfo", { fg = info_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "StInfoReverse", { fg = info_color, bg = "NONE", reverse = true })
 
- 
+				-- Additional diagnostic related highlights to ensure consistency
+				vim.api.nvim_set_hl(0, "Diagnostic", { fg = info_color, bg = "NONE" })
+
+				-- Border groups for diagnostics
+				vim.api.nvim_set_hl(0, "DiagnosticError", { fg = error_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = warn_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = hint_color, bg = "NONE" })
+				vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = info_color, bg = "NONE" })
+
 				vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 				vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 				vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
@@ -131,6 +152,8 @@ return
 				vim.api.nvim_set_hl(0, "TelescopeWindowBorder", { bg = "none" })
 				vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
 
+				-- Make Visual selection transparent with subtle highlighting
+				vim.api.nvim_set_hl(0, "Visual", { bg = "#3d425c", blend = 30 })
 			end,
 		})
 
@@ -145,4 +168,3 @@ return
 		end, 1000)
 	end,
 }
-
