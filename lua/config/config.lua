@@ -11,3 +11,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Set colorscheme after all plugins are loaded
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyDone",
+	callback = function()
+		vim.cmd.colorscheme "xcode"
+	end,
+})

@@ -15,8 +15,8 @@ return
 				-- Make filename and location transparent
 				"MiniStatuslineFilename", "MiniStatuslineFileinfo",
 				"MiniStatuslineDevinfo", "MiniStatuslineInactive",
-				-- General statusline groups - but not the main statusline
-				"StatusLineNC", "StatusLine"
+				-- Don't make StatusLine transparent so roseline can style it
+				-- "StatusLineNC", "StatusLine"
 			},
 			exclude_groups = { -- table: groups you don't want to clear
 				-- Keep only mode indicator solid
@@ -24,9 +24,11 @@ return
 				"MiniStatuslineModeInsert",
 				"MiniStatuslineModeVisual",
 				"MiniStatuslineModeReplace",
-				"MiniStatuslineModeCommand"
+				"MiniStatuslineModeCommand",
+				-- Keep statusline styling
+				"StatusLine",
+				"StatusLineNC"
 			},
 		})
 	end
 }
-
