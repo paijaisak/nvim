@@ -4,7 +4,6 @@ return
 	enabled = true,
 	priority = 1000,  -- Make sure it loads before other plugins
 	config = function()
-		-- This is a Vim-script colorscheme, not a Lua module
-		vim.cmd.colorscheme "xcode"
+		vim.cmd.colorscheme 'xcodewwdc' -- xcode, xcodehc, xcodedark, xcodedarkhc, xcodelight, xcodelighthc, xcodewwdc
 	end,
 }
