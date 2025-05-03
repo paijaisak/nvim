@@ -1,6 +1,6 @@
 -- opts.lua
 
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 vim.api.nvim_create_autocmd('CmdlineEnter', {
     group = vim.api.nvim_create_augroup(
