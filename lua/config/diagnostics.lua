@@ -64,15 +64,43 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[e]xplore 
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = '[l]ocal diagnostics' })
 vim.keymap.set('n', '<leader>g', vim.diagnostic.setqflist, { desc = '[g]lobal diagnostics' })
 
--- alt-j on mac
-vim.keymap.set('n', '√', '<cmd>lnext<CR>', { desc = 'next diagnostic' })
--- alt-k on mac
-vim.keymap.set('n', 'ª', '<cmd>lprev<CR>', { desc = 'previous diagnostic' })
+-- alt-j on mac - go to next diagnostic
+vim.keymap.set('n', '√', function()
+	vim.diagnostic.jump({
+		count = 1,  -- Go to next (positive count)
+		float = false, -- don't show floating window
+		wrap = false, -- don't wrap to beginning
+	})
+end, { desc = 'next diagnostic' })
 
--- alt-J on mac
-vim.keymap.set('n', '¬', '<cmd>cnext<CR>', { desc = 'next global diagnostic' })
--- alt-K on mac
-vim.keymap.set('n', 'º', '<cmd>cprev<CR>', { desc = 'previous global diagnostic' })
+-- alt-k on mac - go to previous diagnostic
+vim.keymap.set('n', 'ª', function()
+	vim.diagnostic.jump({
+		count = -1, -- Go to previous (negative count)
+		float = false, -- don't show floating window
+		wrap = false, -- don't wrap to end
+	})
+end, { desc = 'previous diagnostic' })
+
+-- alt-J on mac - go to next error/warning diagnostic
+vim.keymap.set('n', '¬', function()
+	vim.diagnostic.jump({
+		count = 1,                                                 -- Go to next (positive count)
+		float = false,                                             -- don't show floating window
+		wrap = false,                                              -- don't wrap to beginning
+		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN } -- only errors and warnings
+	})
+end, { desc = 'next error/warning diagnostic' })
+
+-- alt-K on mac - go to previous error/warning diagnostic
+vim.keymap.set('n', 'º', function()
+	vim.diagnostic.jump({
+		count = -1,                                                -- Go to previous (negative count)
+		float = false,                                             -- don't show floating window
+		wrap = false,                                              -- don't wrap to end
+		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN } -- only errors and warnings
+	})
+end, { desc = 'previous error/warning diagnostic' })
 
 local signs = {
 	[vim.diagnostic.severity.ERROR] = "󰅚 ",
