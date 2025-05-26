@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>b", "<C-6>", { desc = 'next buffer' })
 
 -- yanking, putting and deleting to system clipboard more elegantly
 vim.keymap.set("n", "<leader>y", "\"+y", { desc = 'yank to system' })
-vim.keymap.set("n", "<leader>d", "\"+d", { desc = 'delete to system' })
+-- vim.keymap.set("n", "<leader>d", "\"+d", { desc = 'delete to system' })
 vim.keymap.set("n", "<leader>p", "\"+p")
 
 -- change every occurence of word i'm in (the primeagen)

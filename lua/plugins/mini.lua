@@ -155,7 +155,7 @@ return
 		-- local highlight = require('mini.cursorword')
 		-- highlight.setup()
 
-		-- local indentscope = require('mini.indentscope')
-		-- indentscope.setup()
+		local indentscope = require('mini.indentscope')
+		indentscope.setup()
 	end
 }
