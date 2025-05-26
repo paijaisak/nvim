@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 -- show current line number as well as relative
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 1 -- minimum number width
-vim.opt.statuscolumn = '%{v:relnum?v:relnum:v:lnum} '
+vim.opt.statuscolumn = '%s%{v:relnum?v:relnum:v:lnum} '
 
 -- if want thick cursor always: vim.opt.guicursor = ""
 
