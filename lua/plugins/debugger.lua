@@ -9,6 +9,7 @@ return {
 		"theHamsta/nvim-dap-virtual-text",
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",
+		"nvim-telescope/telescope-dap.nvim",
 	},
 
 	config = function()
@@ -70,13 +71,38 @@ return {
 		dap.configurations.cpp = dap.configurations.c
 		dap.configurations.rust = dap.configurations.c
 
-		require("dapui").setup()
 		require("nvim-dap-virtual-text").setup()
+		require("telescope").load_extension("dap")
+
+		dapui.setup({
+			-- Set icons to characters that are more likely to work in every terminal.
+			--    Feel free to remove or use ones that you like more! :)
+			--    Don't feel like these are good choices.
+			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+			controls = {
+				icons = {
+					pause = "⏸",
+					play = "▶",
+					step_into = "⏎",
+					step_over = "⏭",
+					step_out = "⏮",
+					step_back = "b",
+					run_last = "▶▶",
+					terminate = "⏹",
+					disconnect = "⏏",
+				},
+			},
+		})
 
 		-- Setup breakpoint signs
-		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapBreakpointCondition", { text = "󱕦", texthl = "", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapLogPoint", { text = "", texthl = "", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapStopped", { text = "", texthl = "", linehl = "DapStoppedLine", numhl = "" })
+		vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapBreakpointCondition", { text = "⊜", texthl = "", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapBreakpointCondition", { text = "󱕦", texthl = "", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapBreakpointRejected", { text = "⊘", texthl = "", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapLogPoint", { text = "", texthl = "", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapStopped", { text = "⭔", texthl = "", linehl = "DapStoppedLine", numhl = "" })
+		-- vim.fn.sign_define("DapStopped", { text = "", texthl = "", linehl = "DapStoppedLine", numhl = "" })
 	end,
 }
