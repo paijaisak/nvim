@@ -1,18 +1,20 @@
 -- remaps.lua
 
 -- netrw file explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'netrw' })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "netrw" })
 
-vim.keymap.set('n', '<leader>o', '<cmd>Oil --float .<CR>', { desc = 'open oil' })
+vim.keymap.set("n", "<leader>o", "<cmd>Oil --float .<CR>", { desc = "open oil" })
 
 -- space+x sources this file
 vim.keymap.set("n", "<leader>x", "<cmd>so %<CR>")
 
 -- empty, for clue.mini
-vim.keymap.set('n', '<Leader>s', function() end, { desc = '[s]earch' })
+vim.keymap.set("n", "<leader>s", function() end, { desc = "[s]earch" })
+vim.keymap.set("n", "<leader>d", function() end, { desc = "[d]ebug" })
+vim.keymap.set("n", "<leader>c", function() end, { desc = "[c]hange" })
 
 -- transparency-toggle
-vim.keymap.set('n', '<leader>t', ':TransparentToggle<CR>', { desc = 'toggle transparency' })
+vim.keymap.set("n", "<leader>t", ":TransparentToggle<CR>", { desc = "toggle transparency" })
 
 -- space+xx runs this line
 -- vim.keymap.set("n", "<leader>xx", "<cmd>:.lua<CR>")
@@ -35,17 +37,19 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- switch buffers
-vim.keymap.set("n", "<leader>b", "<C-6>", { desc = 'next buffer' })
+vim.keymap.set("n", "<leader>b", "<C-6>", { desc = "next buffer" })
 
 -- yanking, putting and deleting to system clipboard more elegantly
-vim.keymap.set("n", "<leader>y", "\"+y", { desc = 'yank to system' })
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "yank to system" })
 -- vim.keymap.set("n", "<leader>d", "\"+d", { desc = 'delete to system' })
-vim.keymap.set("n", "<leader>p", "\"+p")
+vim.keymap.set("n", "<leader>p", '"+p')
 
 -- change every occurence of word i'm in (the primeagen)
 vim.keymap.set(
-	"n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = 'change every occurence of word i\'m in' }
+	"n",
+	"<leader>cw",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "change every occurence of word i'm in" }
 )
 
 -- chmod +x using leader+x (the primeagen)
