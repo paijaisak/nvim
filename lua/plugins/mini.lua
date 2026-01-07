@@ -1,28 +1,27 @@
 -- mini.lua
 
 --[[
-statusline
-comments (gc)
-autopairs
-surround (sa, sd, sr)
-animations
-indentscope
+	statusline
+	comments (gc)
+	autopairs
+	surround (sa, sd, sr)
+	animations
+	indentscope
 ]]
 
-return
-{
-	'echasnovski/mini.nvim',
+return {
+	"echasnovski/mini.nvim",
 	enabled = true,
 	config = function()
 		-- icons for use with mini plugins
-		local icons = require('mini.icons')
+		local icons = require("mini.icons")
 		icons.setup()
 
-		local minigit = require('mini.git')
+		local minigit = require("mini.git")
 		minigit.setup()
 
-		-- local diff = require('mini.diff')
-		-- diff.setup()
+		local diff = require('mini.diff')
+		diff.setup()
 
 		-- statusline
 		-- local statusline = require('mini.statusline')
@@ -93,30 +92,30 @@ return
 		-- })
 
 		-- comments ('gc' and 'gcc')
-		local comment = require('mini.comment')
+		local comment = require("mini.comment")
 		comment.setup()
 
 		-- easy autopairs
-		local autopairs = require('mini.pairs')
+		local autopairs = require("mini.pairs")
 		autopairs.setup()
 
 		-- surround with sa, delete with sd, substitute with sr + motion
-		local surround = require('mini.surround')
+		local surround = require("mini.surround")
 		surround.setup()
 
 		-- add animations (smooth scrolling, cursor animations, window resize)
-		local animations = require('mini.animate')
+		local animations = require("mini.animate")
 		animations.setup()
 
 		-- Set up mini.clue with a simplified configuration
 		-- Now that all LSP keybindings are global, mini.clue should detect them automatically
-		local clue = require('mini.clue')
+		local clue = require("mini.clue")
 		clue.setup({
 			window = {
 				delay = 200,
 				config = {
-					width = 'auto',
-					border = 'single',
+					width = "auto",
+					border = "single",
 				},
 			},
 
@@ -125,29 +124,29 @@ return
 
 			-- Use builtin_specs for standard key groups
 			builtin_specs = {
-				g = { desc = 'Go to...' },
-				z = { desc = 'Folds, spelling, etc.' },
-				['<Leader>'] = { desc = 'Leader mappings' },
-				['<C-w>'] = { desc = 'Windows' },
+				g = { desc = "Go to..." },
+				z = { desc = "Folds, spelling, etc." },
+				["<Leader>"] = { desc = "Leader mappings" },
+				["<C-w>"] = { desc = "Windows" },
 			},
 
 			triggers = {
 				-- Show clues on these triggers
-				{ mode = 'n', keys = 'g' },
-				{ mode = 'n', keys = 'gr' }, -- Explicit trigger for gr
-				{ mode = 'n', keys = 'z' },
-				{ mode = 'n', keys = '<Leader>' },
-				{ mode = 'n', keys = '<C-w>' },
-				{ mode = 'i', keys = '<C-x>' },
+				{ mode = "n", keys = "g" },
+				{ mode = "n", keys = "gr" }, -- Explicit trigger for gr
+				{ mode = "n", keys = "z" },
+				{ mode = "n", keys = "<Leader>" },
+				{ mode = "n", keys = "<C-w>" },
+				{ mode = "i", keys = "<C-x>" },
 			},
 
 			clues = {
 				-- Basic leader clues
-				{ mode = 'n', keys = '<Leader>pv',       desc = 'netrw' },
-				{ mode = 'n', keys = '<Leader>p',        desc = 'Files' },
+				{ mode = "n", keys = "<Leader>pv", desc = "netrw" },
+				{ mode = "n", keys = "<Leader>p", desc = "Files" },
 
 				-- Show help when pressing leader twice
-				{ mode = 'n', keys = '<Leader><Leader>', desc = 'Show help' },
+				{ mode = "n", keys = "<Leader><Leader>", desc = "Show help" },
 			},
 		})
 
@@ -155,7 +154,7 @@ return
 		-- local highlight = require('mini.cursorword')
 		-- highlight.setup()
 
-		local indentscope = require('mini.indentscope')
+		local indentscope = require("mini.indentscope")
 		indentscope.setup()
-	end
+	end,
 }
