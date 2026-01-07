@@ -3,6 +3,9 @@
 vim.opt.cmdheight = 0
 vim.opt.showmode = false
 
+-- for Obsidian
+vim.opt.conceallevel = 1
+
 vim.api.nvim_create_autocmd('CmdlineEnter', {
 	group = vim.api.nvim_create_augroup(
 		'cmdheight_1_on_cmdlineenter',
