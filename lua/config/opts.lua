@@ -70,7 +70,7 @@ vim.opt.showbreak = "↪ " -- visual indicator for wrapped lines
 
 vim.opt.termguicolors = true -- 24-bit true color support
 
-vim.opt.scrolloff = 5 -- always show at least 8 lines over or below current line when possible
+-- vim.opt.scrolloff = 5 -- always show at least 8 lines over or below current line when possible
 
 vim.opt.signcolumn = "auto:1" -- show sign column only when needed with minimal width
 
